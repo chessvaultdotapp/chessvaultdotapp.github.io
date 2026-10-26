@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v7.4.0"><title>Changelog | Chessvault</title><script>
+      (() => {
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+        let preference = "system";
+        try {
+          const saved = localStorage.getItem("chessvault-theme");
+          if (["light", "dark", "system"].includes(saved)) preference = saved;
+        } catch {
+          // Theme switching still works when storage is unavailable.
+        }
+
+        const apply = () => {
+          document.documentElement.dataset.theme =
+            preference === "system" ? (media.matches ? "dark" : "light") : preference;
+          document.documentElement.dataset.themePreference = preference;
+        };
+
+        apply();
+        media.addEventListener("change", apply);
+        document.addEventListener("theme-change", (event) => {
+          if (!["light", "dark", "system"].includes(event.detail)) return;
+          preference = event.detail;
+          try {
+            localStorage.setItem("chessvault-theme", preference);
+          } catch {
+            // Keep the preference for this page even if it cannot be saved.
+          }
+          apply();
+        });
+      })();
+    </script><link rel="stylesheet" href="/_astro/Layout.Dpc6YVGi.css"><style>.badge[data-astro-cid-o3c3tdmk]{background:var(--color-surface-elevated);max-width:100%;color:var(--color-text-muted);vertical-align:middle;overflow-wrap:anywhere;border:1px solid;border-radius:999px;align-items:center;gap:.25em;padding:.125em .625em;font-size:.75rem;font-weight:700;line-height:1.5;display:inline-flex}.success[data-astro-cid-o3c3tdmk]{color:var(--color-success)}.info[data-astro-cid-o3c3tdmk]{color:var(--color-info)}.warning[data-astro-cid-o3c3tdmk]{color:var(--color-warning)}.danger[data-astro-cid-o3c3tdmk]{color:var(--color-danger)}.release-heading[data-astro-cid-q54hnila]{flex-wrap:wrap;align-items:center;gap:.5rem;display:flex}article[data-astro-cid-q54hnila]{border-top:1px solid var(--color-border);margin-block:3rem;padding-top:1rem;scroll-margin-top:1rem}.release-notes[data-astro-cid-q54hnila] h2{font-size:1.25rem}.release-notes[data-astro-cid-q54hnila] li{margin-block:.5rem}.release-notes[data-astro-cid-q54hnila] pre{padding:1rem;overflow-x:auto}.release-notes[data-astro-cid-q54hnila] img{max-width:100%}.changelog[data-astro-cid-l7qxtvnw]{overflow-wrap:anywhere;width:100%;max-width:52rem;margin-inline:auto}summary[data-astro-cid-l7qxtvnw]{cursor:pointer;padding-block:.5rem;font-weight:700}#historical-previews[data-astro-cid-l7qxtvnw]{background:var(--color-surface-elevated);border:1px solid var(--color-border);border-radius:.5rem;padding:.75rem 1rem}
+</style></head><body><header data-astro-cid-nen7h5rs><nav aria-label="Main navigation" data-astro-cid-nen7h5rs><a class="brand" href="/" data-astro-cid-nen7h5rs>Chessvault</a><div class="header-actions" data-astro-cid-nen7h5rs><a class="nav-button" href="/docs/" data-astro-cid-nen7h5rs>Documentation</a><a class="nav-button" href="/download/" data-astro-cid-nen7h5rs>Download</a><a class="nav-button" href="/changelog/" data-astro-cid-nen7h5rs>Changelog</a><div role="separator" aria-orientation="vertical" class="separator vertical" data-astro-cid-xk2ga6w5></div><button id="theme-preference" type="button" aria-label="Theme: system. Switch to light theme" data-astro-cid-nen7h5rs><span class="theme-icon light" aria-hidden="true" data-astro-cid-nen7h5rs><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg></span><span class="theme-icon dark" aria-hidden="true" data-astro-cid-nen7h5rs><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></svg></span><span class="theme-icon system" aria-hidden="true" data-astro-cid-nen7h5rs><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,72H208V64a24,24,0,0,0-24-24H40A24,24,0,0,0,16,64v96a24,24,0,0,0,24,24H152v8a24,24,0,0,0,24,24h48a24,24,0,0,0,24-24V96A24,24,0,0,0,224,72ZM40,168a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8v8H176a24,24,0,0,0-24,24v72Zm192,24a8,8,0,0,1-8,8H176a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Zm-96,16a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h40A8,8,0,0,1,136,208Zm80-96a8,8,0,0,1-8,8H192a8,8,0,0,1,0-16h16A8,8,0,0,1,216,112Z"/></svg></span></button><div role="separator" aria-orientation="vertical" class="separator vertical" data-astro-cid-xk2ga6w5></div><a class="github-link" href="https://github.com/chessvaultdotapp" aria-label="GitHub" title="GitHub" data-astro-cid-nen7h5rs><span aria-hidden="true" data-astro-cid-nen7h5rs><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></svg></span></a></div></nav></header><script type="module">var e=document.querySelector(`header`),t=()=>e?.classList.toggle(`scrolled`,window.scrollY>0);t(),window.addEventListener(`scroll`,t,{passive:!0}),e&&new ResizeObserver(()=>{document.documentElement.style.setProperty(`--header-height`,`${e.getBoundingClientRect().height}px`)}).observe(e);var n=document.querySelector(`#theme-preference`),r=[`light`,`dark`,`system`];if(n){let e=()=>{let e=document.documentElement.dataset.themePreference??`system`,t=`Theme: ${e}. Switch to ${r[(r.indexOf(e)+1)%r.length]} theme`;n.setAttribute(`aria-label`,t),n.title=t};e(),n.addEventListener(`click`,()=>{let t=document.documentElement.dataset.themePreference??`system`,n=r[(r.indexOf(t)+1)%r.length];document.dispatchEvent(new CustomEvent(`theme-change`,{detail:n})),e()})}</script><main><div class="changelog" data-astro-cid-l7qxtvnw><h1 data-astro-cid-l7qxtvnw>Changelog</h1><p data-astro-cid-l7qxtvnw>Release notes for Chessvault, including published development previews.</p><article id="v0.1.0+26w43b" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.1.0+26w43b</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.1.0%2B26w43b" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="changed">Changed</h2>
+<ul>
+<li>
+<p>Linux directory resolution now logs an info message when an XDG variable is unset and a warning when its value
+is not an absolute path, explaining the fallback to the default directory. These platform-dirs logs are enabled
+by default in the desktop app, including the F12 console, unless overridden by <code>RUST_LOG</code>.</p>
+</li>
+<li>
+<p>Saved window dimensions now use a binary format. Previously saved dimensions are not migrated, so the window
+returns to its default size on the first launch after updating. Subsequent launches restore the newly saved size.</p>
+</li>
+</ul></div></article><article id="v0.1.0+26w43a" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.1.0+26w43a</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.1.0%2B26w43a" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="changed">Changed</h2>
+<ul>
+<li>
+<p>The in-app log console now retains the latest 2,000 events to limit memory usage.</p>
+</li>
+<li>
+<p>Old log files are cleaned up automatically in the background, retaining at most 20 files and removing logs older
+than seven days.</p>
+</li>
+<li>
+<p>The application now prefers the installed application icon, falling back to the embedded icon when unavailable.</p>
+</li>
+</ul>
+<h2 id="fixed">Fixed</h2>
+<ul>
+<li>The application now continues to start when file logging is unavailable, rather than failing to open.</li>
+</ul></div></article><article id="v0.1.0" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.1.0</h2><span class="badge success" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♛︎</span>Stable</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.1.0" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="added">Added</h2>
+<ul>
+<li>
+<p>Added a <strong>Save PGN</strong> button alongside the finished-game result. Save the complete game to a <code>.pgn</code> file as
+move numbers, SAN moves, and the final result, without headers, comments, or variations.</p>
+</li>
+<li>
+<p>Added a <strong>Claim draw</strong> button for threefold repetition and the fifty-move rule. Qualifying intended moves also
+appear as draw-claim buttons, allowing a claim before playing the move without changing the board or move history.
+The fifty-move clock resets after any pawn move or capture.</p>
+</li>
+<li>
+<p>Added automatic draws for fivefold repetition and the seventy-five-move rule. Checkmate on the final move takes
+precedence over a seventy-five-move draw.</p>
+</li>
+<li>
+<p>Added automatic dead-position draws for bare kings, king and one bishop or knight against a bare king, and
+bishop-only material where all bishops occupy the same square colour. Other dead positions, such as blocked-pawn
+positions, are not yet detected. Two knights and opposite-coloured bishops are not automatically treated as dead.</p>
+</li>
+<li>
+<p>Added draw offers with opponent accept and decline controls. An offer survives the offering player’s move;
+the opponent’s next legal move automatically declines it. Accepted offers end the game by agreement without
+changing the board or move history. Draw actions are unavailable during history review or modal interactions.</p>
+</li>
+<li>
+<p>A resizable chessboard with coordinates and chess pieces in the standard starting position.</p>
+</li>
+<li>
+<p>Click-to-move controls with legal move validation, including castling and en passant.</p>
+</li>
+<li>
+<p>Green highlighting for the selected piece, with dots for legal destinations and rings for captures.</p>
+</li>
+<li>
+<p>Window size is remembered between sessions.</p>
+</li>
+<li>
+<p>Added an application/window icon and corrected Linux dock icon association.</p>
+</li>
+<li>
+<p>An in-app log console opened with <strong>F12</strong>, with source filters, selectable text, copy-all, and clear controls.</p>
+</li>
+<li>
+<p>Grayscale board colors and refined piece artwork with more consistent colors and fewer rendering seams.</p>
+</li>
+<li>
+<p>Development releases now include a downloadable Linux x86-64 binary in a <code>.tar.gz</code> archive.
+Extract the archive and run <code>./bin/chessvault</code> in a graphical Linux session.
+Compatible system libraries and graphics drivers are required.</p>
+</li>
+<li>
+<p>Added a centered result box beside the board showing the winner after checkmate or resignation, or the draw result.</p>
+</li>
+<li>
+<p>Added resignation buttons for White and Black. Resigning ends the game and disables further play.</p>
+</li>
+<li>
+<p>Added numbered move history in standard algebraic notation with first, previous, next, and latest navigation.
+Use the buttons, click a move, or use Left/Right, Up/Home, and Down/End; shortcut hints appear below the board.
+The viewed move is highlighted, and earlier positions are read-only to preserve the continuation. Return to latest
+to resume play (<a href="https://github.com/chessvaultdotapp/chessvault/issues/19">#19</a>).</p>
+</li>
+<li>
+<p>Simplified move-history labels by omitting repeated move numbers for Black and removing the redundant live-position
+caption.</p>
+</li>
+<li>
+<p>Added an on-board promotion picker to choose a queen, knight, rook, or bishop instead of automatically promoting
+to a queen. Click outside the picker or press Escape to cancel
+(<a href="https://github.com/chessvaultdotapp/chessvault/issues/16">#16</a>).</p>
+</li>
+<li>
+<p>Added timestamped JSON log files to the application log directory, including application exit errors, for
+troubleshooting (<a href="https://github.com/chessvaultdotapp/chessvault/issues/15">#15</a>).</p>
+</li>
+<li>
+<p>Added a red glow behind the king when it is in check. The glow clears when check is resolved and remains visible
+after checkmate (<a href="https://github.com/chessvaultdotapp/chessvault/issues/17">#17</a>).</p>
+</li>
+<li>
+<p>Added a per-user Linux installer to native release tarballs. Run <code>./install-linux.sh</code> to install the executable,
+application-menu launcher, icons, and license without sudo. Supports installation previews with <code>--dry-run</code>,
+a custom executable prefix with <code>--prefix</code>, and <code>XDG_DATA_HOME</code> for desktop integration files.
+Running the installer again reinstalls or upgrades a recorded installation, backing up existing files before
+replacement and attempting rollback on failure. Modified or untracked files are not overwritten.
+Use <code>--uninstall</code> to remove a recorded installation while preserving user state and unrelated files;
+removal also supports <code>--dry-run</code>. Installations made without a manifest still require manual removal.</p>
+</li>
+<li>
+<p>Added a README and license to Linux distribution packages, with instructions for running, installing, upgrading,
+and uninstalling the application, including manual removal of older installations without a manifest.</p>
+</li>
+<li>
+<p>Added a <strong>New game</strong> button to reset the board and move history. Starting over during an ongoing game asks for
+confirmation; choose Cancel or press Escape to keep the current game. The button is available after a move is played
+or the game ends, including games ended without any moves.</p>
+</li>
+<li>
+<p>Added a website installation guide for Linux development previews, covering installation, upgrades, and removal.</p>
+</li>
+</ul></div></article><details id="historical-previews" data-astro-cid-l7qxtvnw><summary data-astro-cid-l7qxtvnw>Development previews (7)</summary><article id="v0.0.0+26w42b" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.0.0+26w42b</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.0.0%2B26w42b" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="added">Added</h2>
+<ul>
+<li>
+<p>Added a <strong>New game</strong> button to reset the board and move history. Starting over during an ongoing game asks for
+confirmation; choose Cancel or press Escape to keep the current game. The button is disabled until a move is played.</p>
+</li>
+<li>
+<p>Added a website installation guide for Linux development previews, covering installation, upgrades, and removal.</p>
+</li>
+</ul>
+<h2 id="changed">Changed</h2>
+<ul>
+<li>Updated the website download page to distinguish stable releases from development previews and show download
+availability for each platform.</li>
+</ul></div></article><article id="v0.0.0+26w42a" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.0.0+26w42a</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.0.0%2B26w42a" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="added">Added</h2>
+<ul>
+<li>
+<p>Added a per-user Linux installer to native release tarballs. Run <code>./install-linux.sh</code> to install the executable,
+application-menu launcher, icons, and license without sudo. Supports installation previews with <code>--dry-run</code>,
+a custom executable prefix with <code>--prefix</code>, and <code>XDG_DATA_HOME</code> for desktop integration files.
+Running the installer again reinstalls or upgrades a recorded installation, backing up existing files before
+replacement and attempting rollback on failure. Modified or untracked files are not overwritten.
+Use <code>--uninstall</code> to remove a recorded installation while preserving user state and unrelated files;
+removal also supports <code>--dry-run</code>. Installations made without a manifest still require manual removal.</p>
+</li>
+<li>
+<p>Added a README and license to Linux distribution packages, with instructions for running, installing, upgrading,
+and uninstalling the application, including manual removal of older installations without a manifest.</p>
+</li>
+</ul></div></article><article id="v0.0.0+26w41c" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.0.0+26w41c</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.0.0%2B26w41c" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="added">Added</h2>
+<ul>
+<li>
+<p>Added numbered move history in standard algebraic notation with first, previous, next, and latest navigation.
+Use the buttons, click a move, or use Left/Right, Up/Home, and Down/End; shortcut hints appear below the board.
+The viewed move is highlighted, and earlier positions are read-only to preserve the continuation. Return to latest
+to resume play (<a href="https://github.com/chessvaultdotapp/chessvault/issues/19">#19</a>).</p>
+</li>
+<li>
+<p>Added an on-board promotion picker to choose a queen, knight, rook, or bishop instead of automatically promoting
+to a queen. Click outside the picker or press Escape to cancel
+(<a href="https://github.com/chessvaultdotapp/chessvault/issues/16">#16</a>).</p>
+</li>
+<li>
+<p>Added timestamped JSON log files to the application log directory, including application exit errors, for
+troubleshooting (<a href="https://github.com/chessvaultdotapp/chessvault/issues/15">#15</a>).</p>
+</li>
+<li>
+<p>Added a red glow behind the king when it is in check. The glow clears when check is resolved and remains visible
+after checkmate (<a href="https://github.com/chessvaultdotapp/chessvault/issues/17">#17</a>).</p>
+</li>
+</ul></div></article><article id="v0.0.0+26w41b" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.0.0+26w41b</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.0.0%2B26w41b" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="added">Added</h2>
+<ul>
+<li>Added a centered result box beside the board showing the winner after checkmate or resignation, and a draw for
+stalemate. Other draw rules are not yet adjudicated.</li>
+<li>Added resignation buttons for White and Black. Resigning ends the game and disables further play.</li>
+</ul>
+<h2 id="fixed">Fixed</h2>
+<ul>
+<li>Fixed the missing ChessVault icon in the COSMIC dock on Linux (<a href="https://github.com/chessvaultdotapp/chessvault/issues/11">#11</a>).</li>
+</ul></div></article><article id="v0.0.0+26w41a" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.0.0+26w41a</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.0.0%2B26w41a" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="fixed">Fixed</h2>
+<ul>
+<li>Linux tarball releases now include a <code>.desktop</code> launcher and application icons in scalable SVG and
+256×256 PNG formats for desktop integration. AppImage releases now include both icon formats as well.</li>
+</ul></div></article><article id="v0.0.0+26w40b" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.0.0+26w40b</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.0.0%2B26w40b" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="added">Added</h2>
+<ul>
+<li>Development releases now include a downloadable Linux x86-64 binary in a <code>.tar.gz</code> archive.
+Extract the archive and run <code>./bin/chessvault</code> in a graphical Linux session.
+Compatible system libraries and graphics drivers are required.</li>
+</ul></div></article><article id="v0.0.0+26w40a" data-astro-cid-q54hnila><div class="release-heading" data-astro-cid-q54hnila><h2 data-astro-cid-q54hnila>v0.0.0+26w40a</h2><span class="badge info" data-astro-cid-o3c3tdmk><span aria-hidden="true" data-astro-cid-q54hnila>♟︎</span>Preview</span></div><p data-astro-cid-q54hnila><a href="https://github.com/chessvaultdotapp/chessvault/releases/tag/v0.0.0%2B26w40a" data-astro-cid-q54hnila>View release on GitHub</a></p><div class="release-notes" data-astro-cid-q54hnila><h2 id="added">Added</h2>
+<ul>
+<li>A resizable chessboard with coordinates and chess pieces in the standard starting position.</li>
+<li>Click-to-move controls with legal move validation, including castling and en passant.
+Pawns automatically promote to queens.</li>
+<li>Green highlighting for the selected piece, with dots for legal destinations and rings for captures.</li>
+<li>Window size is remembered between sessions.</li>
+<li>An in-app log console opened with <strong>F12</strong>, with source filters, selectable text, copy-all, and clear controls.</li>
+<li>Grayscale board colors and refined piece artwork with more consistent colors and fewer rendering seams.</li>
+</ul></div></article></details></div></main><footer data-astro-cid-jo6i4kqk><p data-astro-cid-jo6i4kqk>&copy; 2026 Chessvault</p></footer></body></html><script type="module">var e=()=>{let e;try{e=decodeURIComponent(location.hash.slice(1))}catch{return}let t=document.getElementById(e),n=t?.closest(`details`);n&&t&&(n.open=!0,t.scrollIntoView())};window.addEventListener(`hashchange`,e),e();</script>
